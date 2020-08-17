@@ -33,6 +33,7 @@ gem 'annotate'
 gem 'pry-rails'
 gem 'pry-byebug'
 gem 'rails-i18n'
+gem 'config'
 
 
 group :development, :test do
@@ -49,6 +50,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'letter_opener_web'
 end
 
 
