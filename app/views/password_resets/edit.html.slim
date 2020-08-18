@@ -1,0 +1,8 @@
+= form_with model: @user, url: password_reset_path(@token), local: true do |f|
+  .form-group
+    = f.label :password, class:'bmd-label-floating'
+    = f.password_field :password, class: 'form-control'
+  .form-group
+    = f.label :password_confirmation, class:'bmd-label-floating'
+    = f.password_field :password_confirmation, class: 'form-control'
+  = f.submit nil, class: 'btn btn-raised btn-primary'
