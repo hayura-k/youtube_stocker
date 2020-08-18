@@ -1,9 +1,0 @@
-= form_with scope: :session, url: login_path,local: true do |f|
-  .form-group
-    = f.label :email, class: 'bmd-label-floating'
-    = f.email_field :email, class: 'form-control'
-  .form-group
-    = f.label :password, class: 'bmd-label-floating'
-    = f.password_field :password, class: 'form-control'
-  = f.submit 'ログイン', class: 'btn btn-raised btn-primary'
-= link_to 'パスワードのお忘れの方はこちら', new_password_reset_path 
