@@ -1,5 +1,0 @@
-= form_with url: password_resets_path, local: true do |f|
-  .form_group
-    = f.label :email, t(User.human_attribute_name(:email)), class:'bmd-label-floating'
-    = f.email_field :email, class: 'form-control'
-  = f.submit t('.submit'), class: 'btn btn-raised btn-primary'
