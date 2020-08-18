@@ -1,0 +1,4 @@
+ja: 
+  password_resets:
+    new: 
+      submit: パスワードの再設定
