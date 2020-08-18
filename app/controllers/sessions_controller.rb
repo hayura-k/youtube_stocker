@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   def create
     @user = login(params[:session][:email], params[:session][:password])
     if @user
-      redirect_to new_user_path, success: 'ログインに成功しました'
+      redirect_to posts_path, success: 'ログインに成功しました'
     else
       flash.now[:danger] = 'ログインに失敗しました'
       render :new
