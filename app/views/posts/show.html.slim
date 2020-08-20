@@ -2,7 +2,7 @@ h1 動画
 iframe width="560" height="315" src="https://www.youtube.com/embed/#{@post.youtube_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"
 
 - if @post.title.blank?
-  p = @response.items[0].snippet.channel_title
+  p = @response.items[0].snippet.title
 - else
   p = @post.title
 

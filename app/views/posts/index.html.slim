@@ -7,7 +7,7 @@ h1 一覧
           - if post.title.blank?
             - options = {id: post.youtube_url}
             - response = @youtube.list_videos("snippet", options)
-            = link_to response.items[0].snippet.channel_title, post_path(post)
+            = link_to response.items[0].snippet.title, post_path(post)
           - else
             = link_to post.title, post_path(post)
           .d-flex.justify-content-between
