@@ -14,7 +14,10 @@ class PostsController < ApplicationController
     url = params[:post][:youtube_url]
     url = url.last(11)
     @post.youtube_url = url
+    tag_list = params[:post][:tagname].split(',') 
+    
     if @post.save
+      @post.save_tag(tag_list)
       redirect_to posts_path, success: '動画を保存しました'
     else
       render :new
@@ -26,7 +29,8 @@ class PostsController < ApplicationController
     @post = current_user.posts.find(params[:id])
     youtube = Google::Apis::YoutubeV3::YouTubeService.new
     youtube.key = Rails.application.credentials.google[:api_key]
-    
+    @post_tags = @post.tags 
+
     options = {
       # urlのラスト11字
       id: @post.youtube_url
@@ -53,7 +57,7 @@ class PostsController < ApplicationController
     @post.delete
     redirect_to posts_path
   end
-  
+
   private
 
   def post_params
