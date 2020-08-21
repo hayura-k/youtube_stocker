@@ -1,0 +1,18 @@
+h1 動画
+iframe width="560" height="315" src="https://www.youtube.com/embed/#{@post.youtube_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"
+
+- if @post.title.blank?
+  p = @response.items[0].snippet.title
+- else
+  p = @post.title
+
+- if @post.body.blank?
+  = raw Rinku.auto_link(simple_format(@response.items[0].snippet.description))
+- else
+  = simple_format(@post.body)
+
+= "タグ"
+- @post_tags.each do |tag|
+  p = link_to tag.tagname, posts_path
+
+= link_to '一覧', posts_path
