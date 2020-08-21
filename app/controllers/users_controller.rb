@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       auto_login(@user)
-      redirect_to new_user_path, notice: 'ユーザーを登録しました'
+      redirect_to login_path, success: 'ユーザーを登録しました'
     else
       render :new
     end
