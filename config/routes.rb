@@ -5,6 +5,9 @@
 #               login GET    /login(.:format)                    sessions#new
 #                     POST   /login(.:format)                    sessions#create
 #              logout DELETE /logout(.:format)                   sessions#destroy
+#      oauth_callback GET    /oauth/callback(.:format)           oauths#callback
+#                     POST   /oauth/callback(.:format)           oauths#callback
+#    auth_at_provider GET    /oauth/:provider(.:format)          oauth#oauth
 #               users POST   /users(.:format)                    users#create
 #            new_user GET    /users/new(.:format)                users#new
 #     password_resets POST   /password_resets(.:format)          password_resets#create
@@ -34,6 +37,9 @@ Rails.application.routes.draw do
   get 'login', to:'sessions#new'
   post 'login', to:'sessions#create'
   delete 'logout', to:'sessions#destroy'
+  get 'oauth/callback', to: 'oauths#callback'
+  post 'oauth/callback', to: 'oauths#callback'
+  get 'oauth/:provider', to: 'oauths#oauth', as: :auth_at_provider
   resources :users, only: %i[new create]
   resources :password_resets, only: %i[new create edit update]
   resources :posts
