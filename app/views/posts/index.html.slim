@@ -10,3 +10,4 @@ h1 一覧
           .d-flex.justify-content-between
             = link_to '編集', edit_post_path(post), class: 'btn btn-raised btn-success'
             = link_to '削除', post_path(post), method: :delete, class: 'btn btn-raised btn-danger'
+= paginate @posts
