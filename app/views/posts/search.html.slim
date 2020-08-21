@@ -1,0 +1,7 @@
+.container
+  h2.text-center 検索結果
+  .row
+    - @posts.each do |post|
+      .col-4
+        iframe width="100%" src="https://www.youtube.com/embed/#{post.youtube_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"
+        = link_to post.title, post_path(post)
