@@ -6,12 +6,7 @@ h1 一覧
       - @posts.each do |post|
         .col-4
           iframe width="100%" src="https://www.youtube.com/embed/#{post.youtube_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"
-          - if post.title.blank?
-            - options = {id: post.youtube_url}
-            - response = @youtube.list_videos("snippet", options)
-            = link_to response.items[0].snippet.title, post_path(post)
-          - else
-            = link_to post.title, post_path(post)
+          = link_to post.title, post_path(post)
           .d-flex.justify-content-between
             = link_to '編集', edit_post_path(post), class: 'btn btn-raised btn-success'
             = link_to '削除', post_path(post), method: :delete, class: 'btn btn-raised btn-danger'
