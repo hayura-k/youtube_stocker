@@ -36,6 +36,7 @@ gem 'rails-i18n'
 gem 'config'
 gem 'google-api-client', '0.9.20', require: 'google/apis/youtube_v3'
 gem 'rinku'
+gem 'kaminari'
 
 
 group :development, :test do
