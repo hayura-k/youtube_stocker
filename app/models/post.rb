@@ -3,7 +3,9 @@ class Post < ApplicationRecord
   has_many :post_tag_relations, dependent: :destroy
   has_many :tags, through: :post_tag_relations
 
-  validates :youtube_url, presence: true, uniqueness: true 
+  validates :youtube_url, presence: true, uniqueness: true
+
+  enum status: { unpublish: 0, publish: 1 }
 
   def save_tag(sent_tags)
     # pluck(:カラム名)で値を配列で取得する

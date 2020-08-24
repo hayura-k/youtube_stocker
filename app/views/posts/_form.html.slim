@@ -12,4 +12,6 @@
   .form-group
     | (,)を入力することで複数のタグをつけることができる
     = f.text_field :tagname, class: 'form-control'
+  .form-group
+    = f.select :status, Post.statuses.keys.map {|k| [t("enums.post.status.#{k}"), k] },{}, {class: 'form-control'}
   = f.submit nil, class: 'btn btn-raised btn-primary'

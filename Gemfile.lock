@@ -106,6 +106,8 @@ GEM
       dry-equalizer (~> 0.2)
       dry-initializer (~> 3.0)
       dry-schema (~> 1.5)
+    enum_help (0.0.17)
+      activesupport (>= 3.0.0)
     erubi (1.9.0)
     execjs (2.7.0)
     faraday (1.0.1)
@@ -310,6 +312,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
   config
+  enum_help
   google-api-client (= 0.9.20)
   html2slim
   jbuilder (~> 2.5)
