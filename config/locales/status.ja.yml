@@ -1,0 +1,6 @@
+ja:
+  enums:
+    post:
+      status:
+        unpublish: 非公開
+        publish: 公開
