@@ -1,6 +1,12 @@
 class PostsController < ApplicationController
+  skip_before_action :require_login, only: %i[index]
   def index
-    @posts = current_user.posts.page(params[:page])
+    @posts = if logged_in?
+      current_user.posts.page(params[:page])
+    else
+      Post.where(status: "publish").page(params[:page])
+    end
+    
   end
 
   def new
@@ -67,7 +73,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :status)
   end
   
   # メソッド名を修正しないといけない
