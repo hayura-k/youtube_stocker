@@ -1,7 +1,8 @@
-p = current_user.username
-p = current_user.email
-p.text-center
-  = link_to '動画を投稿', new_post_path, class: 'btn btn-primary btn-lg', remote: true
+- if logged_in?
+  p = current_user.username
+  p = current_user.email
+  p.text-center
+    = link_to '動画を投稿', new_post_path, class: 'btn btn-primary btn-lg', remote: true
 .container
   .row
     - @posts.each do |post|
