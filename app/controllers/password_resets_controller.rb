@@ -5,9 +5,9 @@ class PasswordResetsController < ApplicationController
 
   def create
     @user = User.find_by(email: params[:email])
-    # tokenをDBに保存して、その後ユーザーにトークンを付与したメールを送る。
+    # tokenをDBに保存して、その後ユーザーにトークンを付与したメールを送る
     @user&.deliver_reset_password_instructions!
-    redirect_to login_path, success: t('.success')
+    redirect_to login_path, success: 'パスワード変更のメールを送りました'
   end
 
   def edit
@@ -23,7 +23,7 @@ class PasswordResetsController < ApplicationController
     return not_authenticated if @user.blank?
     @user.password_confirmation = params[:user][:password_confirmation]
     if @user.change_password(params[:user][:password])
-      redirect_to login_path
+      redirect_to login_path, success: 'パスワードを変更しました'
     else
       render :edit
     end
