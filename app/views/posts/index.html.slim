@@ -3,16 +3,17 @@
   p = current_user.email
   p.text-center
     = link_to '動画を投稿', new_post_path, class: 'btn btn-primary btn-lg', remote: true
-.container.mt-4
+.container
   .row
     - @posts.each do |post|
-      .col-4
+      .col-4.mt-4
         iframe width="100%" src="https://www.youtube.com/embed/#{post.youtube_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"
         = link_to post.title, post_path(post)
-        .d-flex.justify-content-between
-          = link_to edit_post_path(post) do
-            = icon 'far','edit', class: 'fa-lg'
-          = link_to post_path(post), method: :delete, data:{ confirm: '本当に削除しますか？' }  do
-            = icon 'far', 'trash-alt', class: 'fa-lg'
+        - if current_user&.own?(post)  
+          .d-flex.justify-content-between
+            = link_to edit_post_path(post) do
+              = icon 'far','edit', class: 'fa-lg'
+            = link_to post_path(post), method: :delete, data:{ confirm: '本当に削除しますか？' }  do
+              = icon 'far', 'trash-alt', class: 'fa-lg'
 = paginate @posts
 #modal-container
