@@ -1,7 +1,7 @@
 # == Route Map
 #
 #              Prefix Verb   URI Pattern                         Controller#Action
-#                root GET    /                                   sessions#new
+#                root GET    /                                   posts#index
 #               login GET    /login(.:format)                    sessions#new
 #                     POST   /login(.:format)                    sessions#create
 #              logout DELETE /logout(.:format)                   sessions#destroy
@@ -16,6 +16,8 @@
 #      password_reset PATCH  /password_resets/:id(.:format)      password_resets#update
 #                     PUT    /password_resets/:id(.:format)      password_resets#update
 #        search_posts GET    /posts/search(.:format)             posts#search
+#       post_comments POST   /posts/:post_id/comments(.:format)  comments#create
+#             comment DELETE /comments/:id(.:format)             comments#destroy
 #               posts GET    /posts(.:format)                    posts#index
 #                     POST   /posts(.:format)                    posts#create
 #            new_post GET    /posts/new(.:format)                posts#new
@@ -44,8 +46,9 @@ Rails.application.routes.draw do
   get 'oauth/:provider', to: 'oauths#oauth', as: :auth_at_provider
   resources :users, only: %i[new create]
   resources :password_resets, only: %i[new create edit update]
-  resources :posts do
+  resources :posts, shallow: true do
     get 'search', on: :collection
+    resources :comments, only: %i[create destroy]
   end
   resources :tags, only: [] do
     get 'posts', to: 'tags#show'
