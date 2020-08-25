@@ -6,3 +6,13 @@ p = @post.title
 = "タグ"
 - @post_tags.each do |tag|
   p = link_to tag.tagname, tag_posts_path(tag_id: tag.id)
+h2 コメント一覧
+= render 'comments/comments', comments: @comments
+- if logged_in?
+  h2 コメントする
+  / デフォルトでremote: trueになっている
+  = form_with model: [@post, @comment], remote: true do |f|
+    .form-group
+      = f.label :content
+      = f.text_field :content, class: 'form-control input-comment-body'
+    = f.submit nil
