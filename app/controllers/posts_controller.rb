@@ -1,12 +1,7 @@
 class PostsController < ApplicationController
-  skip_before_action :require_login, only: %i[index]
+  skip_before_action :require_login, only: %i[index show]
   def index
-    @posts = if logged_in?
-      current_user.posts.page(params[:page])
-    else
-      Post.where(status: "publish").page(params[:page])
-    end
-    
+    @posts = Post.where(status: "publish").page(params[:page])
   end
 
   def new
@@ -40,9 +35,11 @@ class PostsController < ApplicationController
   
 
   def show
-    @post = current_user.posts.find(params[:id])
+    @post = Post.find(params[:id])
     @post_tags = @post.tags 
     set_youtube_api_key
+    @comment = @post.comments.new
+    @comments = @post.comments.all
   end
 
   def edit

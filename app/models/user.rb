@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :authentications, dependent: :destroy
   accepts_nested_attributes_for :authentications
+  has_many :comments
 
 
   validates :password, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
@@ -11,4 +12,9 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
   validates :reset_password_token, uniqueness: true, allow_nil: true
+
+  def own?(object)
+    id == object.user_id
+  end
+  
 end
