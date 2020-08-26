@@ -3,7 +3,9 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
   button.navbar-toggler data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
     span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
-    ul.navbar-nav.mr-auto
+    ul.navbar-nav
+      li.nav-item
+        = link_to 'マイページ', mypage_posts_path, class: 'nav-link' 
       li.nav-item
         = link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
       = form_with url: search_posts_path, method: :get, local: true, class: 'form-inline my-2 my-lg-0' do |f|
