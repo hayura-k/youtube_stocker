@@ -1,0 +1,14 @@
+= form_with model: post, local: true do |f|
+  = render 'shared/error_messages', object: f.object
+  .form-group
+    = f.label :youtube_url, class: 'bmd-label-floating'
+    = f.text_field :youtube_url, class: 'form-control'
+  .form-group
+    = f.label :title, class: 'bmd-label-floating'
+    = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :body, class: 'bmd-label-floating'
+    = f.text_area :body, class: 'form-control'
+  .form-group
+    = f.select :status, Post.statuses.keys.map {|k| [t("enums.post.status.#{k}"), k] },{}, {class: 'form-control'}
+  = f.submit nil, class: 'btn btn-raised btn-primary'

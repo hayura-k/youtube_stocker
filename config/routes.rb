@@ -27,6 +27,7 @@
 #                     PUT    /posts/:id(.:format)                posts#update
 #                     DELETE /posts/:id(.:format)                posts#destroy
 #           tag_posts GET    /tags/:tag_id/posts(.:format)       tags#show
+#        mypage_posts GET    /mypage/posts(.:format)             mypage/posts#index
 #   letter_opener_web        /letter_opener                      LetterOpenerWeb::Engine
 #
 # Routes for LetterOpenerWeb::Engine:
@@ -54,5 +55,8 @@ Rails.application.routes.draw do
     get 'posts', to: 'tags#show'
   end
 
+  namespace :mypage do
+    resources :posts, only: %i[index]
+  end
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end

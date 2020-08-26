@@ -1,7 +1,9 @@
 div id="comment-#{comment.id}"
   .row
-    .col-10
-      p = comment.content
+    .col-2
+      span =comment.user.username
+    .col-8
+      span = comment.content
     .col-2
       - if current_user&.own?(comment)
         div
