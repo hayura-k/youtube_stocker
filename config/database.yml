@@ -52,3 +52,5 @@ production:
   database: youtube_stocker_production
   username: youtube_stocker
   password: <%= ENV['YOUTUBE_STOCKER_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
