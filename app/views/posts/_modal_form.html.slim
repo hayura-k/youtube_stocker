@@ -1,0 +1,10 @@
+.modal#create-modal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5.modal-title 新しく投稿を作成する
+        button.close data-dismiss="modal" aria-label="Close" type="button"
+          span aria-hidden="true"  &times;
+      .modal-body  
+        = render 'new_form', post: post       
+

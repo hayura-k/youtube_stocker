@@ -1,0 +1,10 @@
+.container.mt-4
+  .row
+    .col-6.offset-3
+      .card
+        .card-body
+          = form_with url: password_resets_path, local: true do |f|
+            .form-group
+              = f.label :email, t(User.human_attribute_name(:email)), class:'bmd-label-floating'
+              = f.email_field :email, class: 'form-control'
+            = f.submit t('.submit'), class: 'btn btn-raised btn-primary'

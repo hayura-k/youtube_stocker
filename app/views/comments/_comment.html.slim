@@ -1,0 +1,12 @@
+div id="comment-#{comment.id}"
+  .row
+    .col-2
+      span =comment.user.username
+    .col-8
+      span = comment.content
+    .col-2
+      - if current_user&.own?(comment)
+        div
+          = link_to comment_path(comment), class: 'mr-2',method: :delete, data: { confirm: '本当に削除しますか？' },remote: true do
+            = icon 'far', 'trash-alt'
+  hr

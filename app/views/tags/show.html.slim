@@ -1,0 +1,14 @@
+h1.text-center = "#{@tag.tagname}の投稿一覧"
+.container
+  .row
+    - @posts.each do |post|
+      .col-md-4.col-12.mb-4
+        .card
+          .card-body
+            iframe width="100%" src="https://www.youtube.com/embed/#{post.youtube_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"
+            = link_to post.title, post_path(post)
+            .d-flex.justify-content-between
+              = link_to edit_post_path(post) do
+                = icon 'far', 'edit'
+              = link_to post_path(post), method: :delete, data: { confirm: '本当に削除しますか？' } do
+                = icon 'far', 'trash-alt'

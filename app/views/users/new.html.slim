@@ -1,0 +1,20 @@
+.container.mt-4
+  .row
+    .col-6.offset-3
+      .card
+        .card-body
+          = form_with model: @user, local: true do |f|
+            = render 'shared/error_messages', object: f.object 
+            .form-group
+              = f.label :username, class:'bmd-label-floating'
+              = f.text_field :username, class:'form-control'
+            .form-group
+              = f.label :email, class:'bmd-label-floating'
+              = f.email_field :email, class:'form-control'
+            .form-group
+              = f.label :password, class:'bmd-label-floating'
+              = f.password_field :password, class:'form-control'
+            .form-group
+              = f.label :password_confirmation, class:'bmd-label-floating'
+              = f.password_field :password_confirmation, class:'form-control'
+            = f.submit nil, class: 'btn btn-raised btn-primary'
