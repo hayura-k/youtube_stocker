@@ -13,6 +13,8 @@
               = f.password_field :password, class: 'form-control'
             = f.submit 'ログイン', class: 'btn btn-raised btn-primary'
           button.btn.btn-block
+            = link_to 'ゲストユーザーでログイン', guest_path 
+          button.btn.btn-block
             = link_to auth_at_provider_path(provider: :google) do
               = icon 'fab', 'google', class: 'mr-1'
               | Googleでログイン

@@ -8,6 +8,7 @@
 #      oauth_callback GET    /oauth/callback(.:format)           oauths#callback
 #                     POST   /oauth/callback(.:format)           oauths#callback
 #    auth_at_provider GET    /oauth/:provider(.:format)          oauths#oauth
+#               guest GET    /guest(.:format)                    sessions#guest_login
 #               users POST   /users(.:format)                    users#create
 #            new_user GET    /users/new(.:format)                users#new
 #     password_resets POST   /password_resets(.:format)          password_resets#create
@@ -45,6 +46,7 @@ Rails.application.routes.draw do
   get 'oauth/callback', to: 'oauths#callback'
   post 'oauth/callback', to: 'oauths#callback'
   get 'oauth/:provider', to: 'oauths#oauth', as: :auth_at_provider
+  get '/guest', to: 'sessions#guest_login'
   resources :users, only: %i[new create]
   resources :password_resets, only: %i[new create edit update]
   resources :posts, shallow: true do
