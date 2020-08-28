@@ -5,6 +5,8 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :authentications
   has_many :comments
 
+  enum role: { standard_user: 0, guest_user: 1 } 
+
 
   validates :password, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
