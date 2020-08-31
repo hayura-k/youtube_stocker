@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation).merge(role: 'standard_user')
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
   
 end
