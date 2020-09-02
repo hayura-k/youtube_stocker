@@ -160,11 +160,7 @@ Rails.application.config.sorcery.configure do |config|
   #
   config.google.key = Rails.application.credentials.google[:client_id]
   config.google.secret = Rails.application.credentials.google[:client_secret]
-  config.google.callback_url =  if Rails.env == 'production'
-                                  'https://www.youtube-stocker.com' 
-                                else
-                                  "http://localhost:3000/oauth/callback?provider=google"
-                                end
+  config.google.callback_url = Settings.google.callback_url
   config.google.user_info_mapping = {:email => "email", :username => "name"}
   config.google.scope = "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
   #
