@@ -164,6 +164,7 @@ Rails.application.config.sorcery.configure do |config|
                                   'https://www.youtube-stocker.com' 
                                 else
                                   "http://localhost:3000/oauth/callback?provider=google"
+                                end
   config.google.user_info_mapping = {:email => "email", :username => "name"}
   config.google.scope = "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
   #
