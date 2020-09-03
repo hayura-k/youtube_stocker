@@ -1,0 +1,2 @@
+google:
+  callback_url: https://www.youtube-stocker.com/oauth/callback?provider=google

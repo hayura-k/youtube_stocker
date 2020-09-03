@@ -1,13 +1,13 @@
 .container
   h1.text-center 詳細ページ
   .row
-    .col-xl-6.col-12
-      iframe width="560" height="315" src="https://www.youtube.com/embed/#{@post.youtube_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"
+    .col-xl-6.col-12.video
+      iframe width='100%' height='315px' src="https://www.youtube.com/embed/#{@post.youtube_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"
       p = @post.title
       h5 タグ一覧
       - @post_tags.each do |tag|
         span.mr-1 = link_to tag.tagname, tag_posts_path(tag_id: tag.id), class: 'badge badge-pill badge-success'
-    .col-xl-6.col-12
+    .col-xl-6.col-12.scroll
       = raw Rinku.auto_link(simple_format(@post.body))
 
   h2 コメント一覧
