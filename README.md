@@ -7,11 +7,11 @@
 
 ### 実装内容
 
-インフラ
-Heroku + Postgresql
-フロント
-BMD4 + jquery + yarn
-バックエンド
+インフラ  
+Heroku + Postgresql  
+フロント  
+BMD4 + jquery + yarn  
+バックエンド  
 Rails５系 + Ruby 
 
 ### 実装した機能
@@ -42,6 +42,6 @@ Rails５系 + Ruby
 ・ config  
 ・ google-api-client  
 ・ rinku  
-. kaminari  
+・ kaminari  
 ・ enum_help  
 ・ font-awesome-sass  
