@@ -21,4 +21,7 @@ class Post < ApplicationRecord
     end
   end
   
+
+  scope :post_title_search, -> (title){ where('title LIKE ?', "%#{title}%") }
+
 end
