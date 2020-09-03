@@ -34,14 +34,14 @@ Rails５系 + Ruby
 
 ### 使用した主なgem
 
-・ sorcery
-・ annotate 
-・ pry-rails
-・ pru-byebug  
+・ sorcery  
+・ annotate  
+・ pry-rails  
+・ pru-byebug   
 ・ rails-i18n  
 ・ config  
 ・ google-api-client  
 ・ rinku  
 ・ kaminari  
 ・ enum_help  
-・ font-awesome-sass  
+・ font-awesome-sass    
