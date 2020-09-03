@@ -36,7 +36,6 @@ gem 'kaminari'
 gem 'enum_help'
 gem 'font-awesome-sass'
 
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -53,6 +52,8 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'letter_opener_web'
+  gem 'rubocop'
+  gem 'rubocop-rails'
 end
 
 
