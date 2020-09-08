@@ -16,7 +16,7 @@ class Post < ApplicationRecord
     new_tags = sent_tags_name - current_tags
     
     old_tags.each do |old_name|
-      self.tags.delete(Tag.find_by(tagname: old_name)
+      self.tags.delete(Tag.find_by(tagname: old_name))
     end
 
     new_tags.each do |new_name|
