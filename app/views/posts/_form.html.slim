@@ -10,5 +10,8 @@
     = f.label :body, class: 'bmd-label-floating'
     = f.text_area :body, class: 'form-control'
   .form-group
+    = f.label :tagname, class: 'bmd-label-floating'
+    = f.text_field :tagname, class: 'form-control', value: @edit_tag_list
+  .form-group
     = f.select :status, Post.statuses.keys.map {|k| [t("enums.post.status.#{k}"), k] },{}, {class: 'form-control'}
   = f.submit nil, class: 'btn btn-raised btn-primary'

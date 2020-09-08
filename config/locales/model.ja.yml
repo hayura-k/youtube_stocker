@@ -2,9 +2,15 @@ ja:
   activerecord:
     models: 
       user: ユーザー
+      post: 投稿
     attributes: 
       user:
         username: ユーザー名
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード確認
+      post:
+        title: タイトル(入力しない場合は代わりに動画のタイトルが挿入されます)
+        body: 本文(入力しない場合は代わりに動画の本文が挿入されます)
+        tagname: (,)を入力することで複数のタグをつけることができます
+        youtube_url: YouTubeURL
