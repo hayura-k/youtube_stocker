@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
+  before_action :set_post, only: %i[edit update destroy]
   def index
     @posts = Post.where(status: "publish").page(params[:page])
   end
@@ -37,18 +38,18 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @post_tags = @post.tags 
-    set_youtube_api_key
     @comment = @post.comments.new
     @comments = @post.comments.all
   end
 
   def edit
-    @post = current_user.posts.find(params[:id])
+    @edit_tag_list = @post.tags.pluck(:tagname).join(",")
   end
 
   def update
-    @post = current_user.posts.find(params[:id])
+    tag_list = params[:post][:tagname].split(',') 
     if @post.update(post_params)
+      @post.save_tag(tag_list)
       redirect_to posts_path, success: '更新しました'
     else
       flash.now[:danger] = '更新失敗しました'
@@ -57,13 +58,14 @@ class PostsController < ApplicationController
   end
 
   def destroy 
-    @post = current_user.posts.find(params[:id])
     @post.delete
-    redirect_to posts_path
+    redirect_to posts_path, danger: '投稿を削除しました'
   end
 
   def search
-    @posts = Post.post_title_search(params[:title]).page(params[:page])
+    @search_form = SearchForm.new(search_params)
+    # 配列にはpageメソッドが使えないため
+    @posts = Kaminari.paginate_array(@search_form.search).page(params[:page])     
   end
   
 
@@ -73,6 +75,10 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :body, :status)
   end
   
+  def search_params
+    params.fetch(:search, {}).permit(:word)
+  end
+
   # メソッド名を修正しないといけない
   def set_youtube_api_key
     @youtube = Google::Apis::YoutubeV3::YouTubeService.new
@@ -92,4 +98,7 @@ class PostsController < ApplicationController
     @post.body = @response.items[0].snippet.description
   end
   
+  def set_post
+    @post = current_user.posts.find(params[:id])
+  end
 end
