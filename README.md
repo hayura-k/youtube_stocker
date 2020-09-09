@@ -30,7 +30,8 @@ BMD(bootstrapマテリアルデザイン)4 + jquery
 ・ ページネーション  
 ・ Fontawesome  
 ・ コメント機能(Ajax通信で実装) 
-・ 国際化
+・ 国際化  
+・ webサーバーをPumaに変更
 
 ### 使用した主なgem  
 
@@ -48,6 +49,6 @@ BMD(bootstrapマテリアルデザイン)4 + jquery
 ・ config  
 ・ letter_opener  
 ・ enum_help  
-・ rinku  
+
 
 [テーブル設計図](https://drive.google.com/file/d/11ey6EfBfC_RPcF8sAm72-AlZz2jJMVQh/view?usp=sharing)
