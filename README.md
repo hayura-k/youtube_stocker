@@ -25,7 +25,7 @@ BMD(bootstrapマテリアルデザイン)4 + jquery
 ・ モーダルで投稿作成  
 ・ YoutubeDataAPIを使用して動画のタイトルと本文を取得  
 ・ タグづけ機能  
-・ 検索機能(タイトルとタグ名で検索、フォームオブジェクトで使用)    
+・ 検索機能(タイトルで検索)    
 ・ 公開・非公開の権限設定    
 ・ ページネーション  
 ・ Fontawesome  
@@ -52,8 +52,3 @@ BMD(bootstrapマテリアルデザイン)4 + jquery
 
 
 [テーブル設計図](https://drive.google.com/file/d/11ey6EfBfC_RPcF8sAm72-AlZz2jJMVQh/view?usp=sharing)
-
-### 苦労したところ
-・youtubeのAPIを使用して動画のタイトルと本文を取得する
-・フォームオブジェクトを使用した検索機能の実装
-・Googleログイン
