@@ -24,5 +24,4 @@ class ApplicationController < ActionController::Base
     logger.error [e,*e.backtrace].join("¥n")
     render 'errors/error500', status: 500, format: [:html]
   end
-  
 end

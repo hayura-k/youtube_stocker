@@ -6,7 +6,7 @@ class SearchForm
 
   def search
     if Post.title_contain(word).present?
-      return Post.title_contain(word)
+      return Post.title_contain(word).where(status: 'publish')
     elsif Tag.tagname_contain(word).present?
       tags = Tag.tagname_contain(word)
       posts = []
