@@ -60,5 +60,8 @@ Rails.application.routes.draw do
   namespace :mypage do
     resources :posts, only: %i[index]
   end
+
+  match "*path", to: 'application#error404', via: :all
+
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end

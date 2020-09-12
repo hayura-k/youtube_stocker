@@ -2,7 +2,8 @@ class PostsController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
   before_action :set_post, only: %i[edit update destroy]
   def index
-    @posts = Post.where(status: "publish").page(params[:page])
+    # N+1問題解決
+    @posts = Post.where(status: "publish").includes(:tags).page(params[:page])
   end
 
   def new
