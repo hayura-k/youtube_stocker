@@ -37,5 +37,18 @@ module YoutubeStocker
       g.test_flamework false
       g.helper false
     end
+
+    # セッション情報の管理をredisに変更
+    config.session_store :redis_store, {
+      servers: [
+        {
+          host: 'localhost',
+          port: 6379,
+          db: 0,
+          namespace: 'session'
+        },
+      ],
+      expire_after: 1.day
+    }
   end
 end
