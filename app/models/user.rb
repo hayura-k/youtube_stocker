@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :authentications, dependent: :destroy
   accepts_nested_attributes_for :authentications
   has_many :comments
+  has_many :likes
+  has_many :like_posts, through: :likes, source: :post
 
   enum role: { standard_user: 0, guest_user: 1 } 
 
