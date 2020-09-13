@@ -13,3 +13,17 @@
   height: 500px;
   overflow: scroll;
 }
+
+.error-text {
+  border: solid 1px;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.error-box {
+  text-align: center;
+  padding: 300px;
+  border: solid 2px;
+  background-color: coral;
+}
