@@ -25,7 +25,7 @@ BMD(bootstrapマテリアルデザイン)4 + jquery
 ・ モーダルで投稿作成  
 ・ YoutubeDataAPIを使用して動画のタイトルと本文を取得  
 ・ タグづけ機能  
-・ 検索機能(タイトルで検索)    
+・ 検索機能(タイトル名とタグ名で検索、フォームオブジェクトを使用)    
 ・ 公開・非公開の権限設定    
 ・ ページネーション  
 ・ Fontawesome  
@@ -49,6 +49,13 @@ BMD(bootstrapマテリアルデザイン)4 + jquery
 ・ config  
 ・ letter_opener  
 ・ enum_help  
-
+・ rubocop  
+・ rubocop-rails  
 
 [テーブル設計図](https://drive.google.com/file/d/11ey6EfBfC_RPcF8sAm72-AlZz2jJMVQh/view?usp=sharing)
+
+### 苦労した所
+
+・フォームオブジェクトを使用した検索機能
+・ YoutubeのAPIを使用して、動画のタイトルと本文を取ってくる
+・ Googleログイン
