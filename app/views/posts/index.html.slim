@@ -8,7 +8,7 @@
     - @posts.each do |post|
       .col-md-4.col-12.mb-4
         .card
-          iframe width="100%" src="https://www.youtube.com/embed/#{post.youtube_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"
+          iframe width="100%" src="https://www.youtube.com/embed/#{post.youtube_id}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"
           .card-body
             .card-title
               = link_to post.title, post_path(post)

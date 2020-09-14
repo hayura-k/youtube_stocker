@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  validates :youtube_url, presence: true, uniqueness: true
+  validates :youtube_id, presence: true
 
   enum status: { unpublish: 0, publish: 1 }
 
