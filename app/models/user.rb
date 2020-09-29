@@ -9,7 +9,6 @@ class User < ApplicationRecord
 
   enum role: { standard_user: 0, guest_user: 1 } 
 
-
   validates :password, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
@@ -19,6 +18,18 @@ class User < ApplicationRecord
 
   def own?(object)
     id == object.user_id
+  end
+  
+  def like(post)
+    like_posts << post
+  end
+
+  def unlike(post)
+    like_posts.destroy(post)
+  end
+
+  def like?(post)
+    like_posts.include?(post)
   end
   
 end
