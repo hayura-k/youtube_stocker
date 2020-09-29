@@ -4,9 +4,10 @@ class User < ApplicationRecord
   has_many :authentications, dependent: :destroy
   accepts_nested_attributes_for :authentications
   has_many :comments
+  has_many :likes
+  has_many :like_posts, through: :likes, source: :post
 
   enum role: { standard_user: 0, guest_user: 1 } 
-
 
   validates :password, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
@@ -17,6 +18,18 @@ class User < ApplicationRecord
 
   def own?(object)
     id == object.user_id
+  end
+  
+  def like(post)
+    like_posts << post
+  end
+
+  def unlike(post)
+    like_posts.destroy(post)
+  end
+
+  def like?(post)
+    like_posts.include?(post)
   end
   
 end

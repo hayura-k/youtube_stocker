@@ -1,4 +1,4 @@
 .container
   h1.text-center 投稿編集
-  iframe width="560" height="315" src="https://www.youtube.com/embed/#{@post.youtube_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"
+  iframe width="560" height="315" src="https://www.youtube.com/embed/#{@post.youtube_id}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"
   = render 'form', post: @post

@@ -5,18 +5,9 @@ class SearchForm
   attribute :word, :string
 
   def search
-    if Post.title_contain(word).present?
-      return Post.title_contain(word)
-    elsif Tag.tagname_contain(word).present?
-      tags = Tag.tagname_contain(word)
-      posts = []
-      tags.each do |tag|
-        posts << tag.posts
-      end
-      return posts.flatten
-    else 
-      return Post.where(status: "publish")
-    end
+    posts = []
+    posts << Post.title_contain(word)
+    posts << Tag.tagname_contain(word).map(&:posts)
+    posts.flatten.uniq.select { |post| post.status == 'publish' }
   end
-  
 end

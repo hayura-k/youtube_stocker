@@ -28,7 +28,10 @@
 #                     PUT    /posts/:id(.:format)                posts#update
 #                     DELETE /posts/:id(.:format)                posts#destroy
 #           tag_posts GET    /tags/:tag_id/posts(.:format)       tags#show
+#               likes POST   /likes(.:format)                    likes#create
+#                like DELETE /likes/:id(.:format)                likes#destroy
 #        mypage_posts GET    /mypage/posts(.:format)             mypage/posts#index
+#                            /*path(.:format)                    application#error404
 #   letter_opener_web        /letter_opener                      LetterOpenerWeb::Engine
 #
 # Routes for LetterOpenerWeb::Engine:
@@ -56,6 +59,8 @@ Rails.application.routes.draw do
   resources :tags, only: [] do
     get 'posts', to: 'tags#show'
   end
+
+  resources :likes, only: %i[create destroy]
 
   namespace :mypage do
     resources :posts, only: %i[index]

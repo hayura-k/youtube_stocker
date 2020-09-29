@@ -3,6 +3,6 @@ class TagsController < ApplicationController
 
   def show
     @tag = Tag.find(params[:tag_id])
-    @posts = @tag.posts
+    @posts = @tag.posts.where(status: 'publish')
   end
 end
