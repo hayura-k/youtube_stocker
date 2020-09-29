@@ -14,7 +14,8 @@
             - post.tags.each do |post_tag|
               span.mr-1.tag-link = link_to post_tag.tagname, tag_posts_path(tag_id: post_tag.id)
             - if logged_in?
-              = render 'likes/like_area', post: post
+              .mt-1
+                = render 'likes/like_area', post: post
             - if current_user&.own?(post)  
               .d-flex.justify-content-end
                 = link_to edit_post_path(post) do
