@@ -4,5 +4,5 @@ class Tag < ApplicationRecord
 
   validates :tagname, presence: true, uniqueness: true
 
-  scope :tagname_contain, -> (word){ where('tagname LIKE ?',"%#{word}%") }
+  scope :tagname_contain, ->(word) { where('tagname LIKE ?', "%#{word}%") }
 end

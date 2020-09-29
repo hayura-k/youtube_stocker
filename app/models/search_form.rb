@@ -8,7 +8,6 @@ class SearchForm
     posts = []
     posts << Post.title_contain(word)
     posts << Tag.tagname_contain(word).map(&:posts)
-    posts.flatten.uniq.select{|post| post.status == 'publish'}
+    posts.flatten.uniq.select { |post| post.status == 'publish' }
   end
-  
 end
