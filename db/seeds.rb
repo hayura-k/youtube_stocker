@@ -5,6 +5,7 @@ User.create(
   password_confirmation: 'password'
   role: 'guest_user'
 )
+puts 'ゲストユーザーを作成しました'
 
 2.times do |n|
   User.create(
