@@ -12,18 +12,18 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
-    url = params[:post][:youtube_url]
-    url = url.last(11)
-    @post.youtube_url = url
+    url = params[:post][:youtube_id]
+    youtubeID = url.last(11)
+    @post.youtube_id = youtubeID
     tag_list = params[:post][:tagname].split(',') 
     
     if @post.title.blank?
-      set_youtube_api_key
+      set_youtube_api_key_and_get_response
       set_youtube_object_title
     end
 
     if @post.body.blank? 
-      set_youtube_api_key
+      set_youtube_api_key_and_get_response
       set_youtube_object_body
     end
 
@@ -64,9 +64,9 @@ class PostsController < ApplicationController
   end
 
   def search
-    @search_form = SearchForm.new(search_params)
+    search_form = SearchForm.new(search_params)
     # 配列にはpageメソッドが使えないため
-    @posts = Kaminari.paginate_array(@search_form.search).page(params[:page])     
+    @posts = Kaminari.paginate_array(search_form.search).page(params[:page])
   end
   
 
@@ -80,13 +80,12 @@ class PostsController < ApplicationController
     params.fetch(:search, {}).permit(:word)
   end
 
-  # メソッド名を修正しないといけない
-  def set_youtube_api_key
+  def set_youtube_api_key_and_get_response
     @youtube = Google::Apis::YoutubeV3::YouTubeService.new
     @youtube.key = Rails.application.credentials.google[:api_key]
     options = {
       # urlのラスト11字
-      id: @post.youtube_url
+      id: @post.youtube_id
     }
     @response = @youtube.list_videos("snippet", options)
   end

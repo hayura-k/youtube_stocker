@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_28_033256) do
+ActiveRecord::Schema.define(version: 2020_09_13_091748) do
 
   create_table "authentications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 2020_08_28_033256) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "post_id"], name: "index_likes_on_user_id_and_post_id", unique: true
+  end
+
   create_table "post_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "post_id", null: false
     t.integer "tag_id", null: false
@@ -40,13 +48,13 @@ ActiveRecord::Schema.define(version: 2020_08_28_033256) do
   end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "youtube_url", null: false
+    t.string "youtube_id", null: false
     t.string "title"
     t.text "body"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "status", null: false
+    t.integer "status", default: 1, null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 

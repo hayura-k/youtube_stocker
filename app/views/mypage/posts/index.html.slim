@@ -1,15 +1,18 @@
+h1.text-center.mt-2 マイページの投稿一覧（公開・非公開含む）
 .container
-  h1.text-center マイページの投稿一覧（公開・非公開含む）
   .row
     - @posts.each do |post|
       .col-md-4.col-12.mb-4
         .card
+          iframe width="100%" src="https://www.youtube.com/embed/#{post.youtube_id}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"
           .card-body
-            iframe width="100%" src="https://www.youtube.com/embed/#{post.youtube_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"
             .card-title  
               = link_to post.title, post_path(post)
             - post.tags.each do |post_tag|
-              span.mr-1 = link_to post_tag.tagname, tag_posts_path(tag_id: post_tag.id), class: 'badge badge-pill badge-success'
+              span.mr-1.tag-link = link_to post_tag.tagname, tag_posts_path(tag_id: post_tag.id)
+            - if logged_in?
+              .mt-1
+                = render 'likes/like_area', post: post
             - if current_user&.own?(post)  
               .d-flex.justify-content-end
                 = link_to edit_post_path(post) do
