@@ -1,9 +1,8 @@
 - if logged_in?
-  p.text-center
-    = link_to '動画を投稿', new_post_path, class: 'btn btn-primary btn-lg', remote: true
-- else
-  h2.text-center.mt-2 動画一覧
-.container
+  p.text-center.mt-2.create-button
+    = link_to '動画を投稿', new_post_path, remote: true
+
+.container.mt-4
   .row
     - @posts.each do |post|
       .col-md-4.col-12.mb-4
@@ -13,7 +12,9 @@
             .card-title
               = link_to post.title, post_path(post)
             - post.tags.each do |post_tag|
-              span.mr-1 = link_to post_tag.tagname, tag_posts_path(tag_id: post_tag.id), class: 'badge badge-pill badge-success'
+              span.mr-1.tag-link = link_to post_tag.tagname, tag_posts_path(tag_id: post_tag.id)
+            - if logged_in?
+              = render 'likes/like_area', post: post
             - if current_user&.own?(post)  
               .d-flex.justify-content-end
                 = link_to edit_post_path(post) do

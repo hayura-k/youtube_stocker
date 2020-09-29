@@ -9,7 +9,7 @@ h1.text-center = "#{@tag.tagname}の投稿一覧"
             .card-title
               = link_to post.title, post_path(post)
             - post.tags.each do |post_tag|
-              span.mr-1 = link_to post_tag.tagname, tag_posts_path(tag_id: post_tag.id), class: 'badge badge-pill badge-success'
+              span.mr-1.tag-link = link_to post_tag.tagname, tag_posts_path(tag_id: post_tag.id)
             .d-flex.justify-content-end
               - if current_user&.own?(post)
                 = link_to edit_post_path(post) do
