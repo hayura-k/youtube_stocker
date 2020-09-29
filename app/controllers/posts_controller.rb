@@ -64,9 +64,9 @@ class PostsController < ApplicationController
   end
 
   def search
-    @search_form = SearchForm.new(search_params)
+    search_form = SearchForm.new(search_params)
     # 配列にはpageメソッドが使えないため
-    @posts = Kaminari.paginate_array(@search_form.search).page(params[:page])     
+    @posts = Kaminari.paginate_array(search_form.search).page(params[:page])
   end
   
 
