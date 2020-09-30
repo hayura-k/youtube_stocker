@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :likes
   has_many :like_posts, through: :likes, source: :post
 
+  mount_uploader :avatar, AvatarUploader
+
   enum role: { standard_user: 0, guest_user: 1 } 
 
   validates :password, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
