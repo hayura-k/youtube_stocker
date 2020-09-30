@@ -52,7 +52,6 @@ group :development do
   gem 'letter_opener_web'
   gem 'rubocop'
   gem 'rubocop-rails'
-  gem 'bullet'
 end
 
 
