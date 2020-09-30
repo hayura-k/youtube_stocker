@@ -1,10 +1,11 @@
-.container
-  h1.text-center 詳細ページ
+.container.mt-4
   .row
     .col-xl-6.col-12.video
       iframe width='100%' height='315px' src="https://www.youtube.com/embed/#{@post.youtube_id}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"
       p = @post.title
-      h5 タグ一覧
+      = image_tag @post.user.avatar.url, size: '30x30', class: 'rounded-circle' if @post.user.avatar?
+      span.ml-1 = link_to @post.user.username, edit_mypage_user_path(@post.user)
+      h5.mt-1 タグ一覧
       - @post_tags.each do |tag|
         span.mr-1.tag-link = link_to tag.tagname, tag_posts_path(tag_id: tag.id)
     .col-xl-6.col-12.scroll
