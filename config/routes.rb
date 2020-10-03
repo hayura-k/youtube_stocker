@@ -31,6 +31,9 @@
 #               likes POST   /likes(.:format)                    likes#create
 #                like DELETE /likes/:id(.:format)                likes#destroy
 #        mypage_posts GET    /mypage/posts(.:format)             mypage/posts#index
+# edit_mypage_account GET    /mypage/account/:id/edit(.:format)  mypage/account#edit
+#      mypage_account PATCH  /mypage/account/:id(.:format)       mypage/account#update
+#                     PUT    /mypage/account/:id(.:format)       mypage/account#update
 #                            /*path(.:format)                    application#error404
 #   letter_opener_web        /letter_opener                      LetterOpenerWeb::Engine
 #
@@ -64,6 +67,7 @@ Rails.application.routes.draw do
 
   namespace :mypage do
     resources :posts, only: %i[index]
+    resources :account, only: %i[edit update]
   end
 
   match "*path", to: 'application#error404', via: :all

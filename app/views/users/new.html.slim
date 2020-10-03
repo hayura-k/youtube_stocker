@@ -17,4 +17,9 @@
             .form-group
               = f.label :password_confirmation, class:'bmd-label-floating'
               = f.password_field :password_confirmation, class:'form-control'
+            .form-group
+              = f.label :avatar, class: 'bmd-label-floating'
+              = f.file_field :avatar, class: 'form-control', onchange: 'previewFileWithId(preview)', accept: 'image/*'
+              = f.hidden_field :avatar_cache
+              = image_tag @user.avatar.url , class: 'rounded-circle', id: 'preview', size: '100x100' if @user.avatar?
             = f.submit nil, class: 'btn btn-raised btn-primary'

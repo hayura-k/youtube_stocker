@@ -1,11 +1,13 @@
-nav.navbar.navbar-expand-lg.top-nav
+nav.navbar
   = link_to 'Youtubeストッカー', root_path, class: 'navbar-brand'
   button.navbar-toggler data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
     span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.ml-auto
       li.nav-item
-        = link_to 'マイページ', mypage_posts_path, class: 'nav-link' 
+        = link_to '自分の投稿', mypage_posts_path, class: 'nav-link'
+      li.nav-item
+        = link_to 'マイページ編集', edit_mypage_account_path(current_user), class: 'nav-link'
       li.nav-item
         = link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
       = form_with model: @search_form, scope: :search, url: search_posts_path, method: :get, local: true, class: 'form-inline my-2 my-lg-0' do |f|
