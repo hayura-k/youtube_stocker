@@ -6,9 +6,10 @@
           = form_with model: @user, url: mypage_account_path,local: true do |f|
             = render 'shared/error_messages', object: f.object 
             .form-group
-              = f.label :avatar, class: 'bmd-label-floating'
-              = f.file_field :avatar, class: 'form-control'
-              = image_tag @user.avatar.url, class: 'rounded-circle', id: 'avatar_preview',size: '100x100' if @user.avatar?
+              = f.label :avatar,class: 'bmd-label-floating'
+              = f.file_field :avatar, class: 'form-control', onchange: 'previewFileWithId(preview)', accept: 'image/*'
+              = f.hidden_field :avatar_cache
+              = image_tag @user.avatar.url, class: 'rounded-circle', id: 'preview',size: '100x100' if @user.avatar?
             .form-group
               = f.label :username, class:'bmd-label-floating'
               = f.text_field :username, class:'form-control'
