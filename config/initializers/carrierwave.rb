@@ -6,9 +6,7 @@ if Rails.env.production?
       aws_secret_access_key: Rails.application.credentials.aws[:secret_access_key],
       region: Rails.application.credentials.aws[:region]
     }
-
-    config.fog_directory = Rails.application.credentials.aws[:fog_directroy]
+    config.fog_directory = Rails.application.credentials.aws[:fog_directory]
     config.cache_storage = :fog
   end
-  
 end
