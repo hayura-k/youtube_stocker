@@ -10,7 +10,7 @@
           iframe width="100%" src="https://www.youtube.com/embed/#{post.youtube_id}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"
           .card-body
             = image_tag post.user.avatar.url, size: '30x30', class: 'rounded-circle' if post.user.avatar?
-            span.ml-1 = link_to post.user.username, edit_mypage_user_path(post.user)
+            span.ml-1 = link_to post.user.username, edit_mypage_account_path(post.user)
             .card-title.mt-1
               = link_to post.title, post_path(post)
             - post.tags.each do |post_tag|
