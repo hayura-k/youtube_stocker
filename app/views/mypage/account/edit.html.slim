@@ -3,12 +3,12 @@
     .col-lg-6.offset-lg-3.col-12
       .card
         .card-body
-          = form_with model: @user, url: mypage_user_path,local: true do |f|
+          = form_with model: @user, url: mypage_account_path,local: true do |f|
             = render 'shared/error_messages', object: f.object 
             .form-group
               = f.label :avatar, class: 'bmd-label-floating'
               = f.file_field :avatar, class: 'form-control'
-              = image_tag @user.avatar.url, class: 'rounded-circle', size: '100x100' if @user.avatar?
+              = image_tag @user.avatar.url, class: 'rounded-circle', id: 'avatar_preview',size: '100x100' if @user.avatar?
             .form-group
               = f.label :username, class:'bmd-label-floating'
               = f.text_field :username, class:'form-control'
