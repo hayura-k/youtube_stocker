@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[edit update destroy]
   def index
     # N+1問題解決
-    @posts = Post.where(status: "publish").includes(:tags).page(params[:page])
+    @posts = Post.where(status: "publish").includes(:tags,:user).page(params[:page])
   end
 
   def new
@@ -40,7 +40,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post_tags = @post.tags 
     @comment = @post.comments.new
-    @comments = @post.comments.all
+    @comments = @post.comments.includes(:user)
   end
 
   def edit

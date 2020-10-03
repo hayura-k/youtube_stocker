@@ -1,10 +1,11 @@
 div id="comment-#{comment.id}"
   .row
-    .col-2
-      span =comment.user.username
-    .col-8
+    .col-md-2.col-12
+      span.mr-1 = image_tag comment.user.avatar.url, size: '40x40', class: 'rounded-circle' if comment.user.avatar?
+      span = comment.user.username
+    .col-md-9.col-12 
       span = comment.content
-    .col-2
+    .col-md-1.col-12
       - if current_user&.own?(comment)
         div
           = link_to comment_path(comment), class: 'mr-2',method: :delete, data: { confirm: '本当に削除しますか？' },remote: true do
