@@ -4,10 +4,12 @@ nav.navbar.navbar-expand-lg
     span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.ml-auto
-      li.nav-item
-        = link_to '自分の投稿', mypage_posts_path, class: 'nav-link'
-      li.nav-item
-        = link_to 'マイページ編集', edit_mypage_account_path(current_user), class: 'nav-link'
+      li.nav-item.dropdown
+        a#navbarDropdown.nav-link.dropdown-toggle href='#' role='button' data-toggle='dropdown' aria-haspopup=true aria-expand=false
+          | マイページ
+        .dropdown-menu aria-labelledby='navbarDropdown'
+          = link_to '自分の投稿', mypage_posts_path, class: 'dropdown-item'
+          = link_to 'マイページ編集', edit_mypage_account_path(current_user), class: 'dropdown-item'
       li.nav-item
         = link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
       = form_with model: @search_form, scope: :search, url: search_posts_path, method: :get, local: true, class: 'form-inline my-2 my-lg-0' do |f|
