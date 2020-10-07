@@ -13,26 +13,18 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.new(post_params)
     url = params[:post][:youtube_id]
-    youtubeID = url.last(11)
-    @post.youtube_id = youtubeID
-    tag_list = params[:post][:tagname].split(',') 
-    
-    if @post.title.blank?
-      set_youtube_api_key_and_get_response
-      set_youtube_object_title
-    end
+    tag_list = params[:post][:tagname].split(',')
+    # 動画のタイトルと本文を自動取得する処理
+    youtube_id = url.last(11)
+    @post.youtube_id = youtube_id
+    attach_youtube_object_attributes
 
-    if @post.body.blank? 
-      set_youtube_api_key_and_get_response
-      set_youtube_object_body
-    end
-
-    if @post.save
-      @post.save_tag(tag_list)
-      redirect_to posts_path, success: '動画を保存しました'
-    else
-      render :new
-    end
+      if @post.save
+        @post.save_tag(tag_list)
+        redirect_to posts_path, success: '動画を保存しました'
+      else
+        render :new
+      end
   end
   
 
@@ -80,7 +72,11 @@ class PostsController < ApplicationController
     params.fetch(:search, {}).permit(:word)
   end
 
-  def set_youtube_api_key_and_get_response
+  def set_post
+    @post = current_user.posts.find(params[:id])
+  end
+
+  def attach_youtube_object_attributes
     @youtube = Google::Apis::YoutubeV3::YouTubeService.new
     @youtube.key = Rails.application.credentials.google[:api_key]
     options = {
@@ -88,17 +84,9 @@ class PostsController < ApplicationController
       id: @post.youtube_id
     }
     @response = @youtube.list_videos("snippet", options)
+
+    @post.title = @response.items[0].snippet.title if @post.title.blank?
+    @post.body = @response.items[0].snippet.description if @post.body.blank?
   end
-  
-  def set_youtube_object_title
-    @post.title = @response.items[0].snippet.title
-  end
-  
-  def set_youtube_object_body
-    @post.body = @response.items[0].snippet.description
-  end
-  
-  def set_post
-    @post = current_user.posts.find(params[:id])
-  end
+
 end
