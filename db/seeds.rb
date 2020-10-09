@@ -2,7 +2,7 @@ User.create(
   username: 'guest',
   email: 'guest@example.com',
   password: 'password',
-  password_confirmation: 'password'
+  password_confirmation: 'password',
   role: 'guest_user'
 )
 puts 'ゲストユーザーを作成しました'
