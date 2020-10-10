@@ -4,6 +4,11 @@ nav.navbar.navbar-expand-lg
     span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.ml-auto
+      li.nav-item
+        a.nav-link href="https://www.youtube.com/?gl=JP" target='_blank' rel='noopener noreferrer'
+          i.fab.fa-youtube.fa-lg 
+      li.nav-item
+        = link_to 'みんなの人気動画', ranks_path, class: 'nav-link'
       li.nav-item.dropdown
         a#navbarDropdown.nav-link.dropdown-toggle href="#" role='button' data-toggle='dropdown' aria-haspopup='true' aria-expand='false'
           | マイページ
@@ -15,3 +20,5 @@ nav.navbar.navbar-expand-lg
       = form_with model: @search_form, scope: :search, url: search_posts_path, method: :get, local: true, class: 'form-inline my-2 my-lg-0' do |f|
         = f.search_field :word, class: 'form-control mr-sm-2', placeholder: 'タイトルorタグ'
         = f.submit '検索', class: 'btn btn-search my-2 my-sm-0'
+      = image_tag current_user.avatar.url, size: '30x30', class: 'mt-2' if current_user.avatar?
+      
