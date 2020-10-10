@@ -93,3 +93,22 @@ p.create-button a {
 .liked {
   color: red;
 }
+
+.rank-post {
+  padding: 0;
+  margin: 0;
+}
+
+.card-header h5 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: #5D99FF;
+  text-align: center;
+}
+
+.card .text-center {
+  padding: 10px;
+}
+
+.fa.fa-youtube-play {
+  background-color: red
+}
