@@ -4,7 +4,7 @@
       iframe width='100%' height='315px' src="https://www.youtube.com/embed/#{@post.youtube_id}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"
       p = @post.title
       = image_tag @post.user.avatar.url, size: '30x30', class: 'rounded-circle' if @post.user.avatar?
-      span.ml-1 = link_to @post.user.username, edit_mypage_account_path(@post.user)
+      span.ml-1 = @post.user.username
       h5.mt-1 タグ一覧
       - @post_tags.each do |tag|
         span.mr-1.tag-link = link_to tag.tagname, tag_posts_path(tag_id: tag.id)

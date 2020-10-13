@@ -12,9 +12,9 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
+    tag_list = params[:post][:tagname].split(',') 
+    # youtube動画のタイトルと本文を自動取得
     url = params[:post][:youtube_id]
-    tag_list = params[:post][:tagname].split(',')
-    # 動画のタイトルと本文を自動取得する処理
     youtube_id = url.last(11)
     @post.youtube_id = youtube_id
     attach_youtube_object_attributes
@@ -84,9 +84,7 @@ class PostsController < ApplicationController
       id: @post.youtube_id
     }
     @response = @youtube.list_videos("snippet", options)
-
     @post.title = @response.items[0].snippet.title if @post.title.blank?
     @post.body = @response.items[0].snippet.description if @post.body.blank?
   end
-
 end
