@@ -8,7 +8,7 @@
 ### 実装内容
 
 インフラ  
-heroku + Postgresql  
+heroku + Postgresql + S3 + Redis
 バックエンド  
 Rails5.2.3 + ruby 2.6  
 フロント  
@@ -31,7 +31,13 @@ BMD(bootstrapマテリアルデザイン)4 + jquery
 ・ Fontawesome  
 ・ コメント機能(Ajax通信で実装) 
 ・ 国際化  
-・ webサーバーをPumaに変更
+・ webサーバーをPumaに変更  
+・ いいね機能(非同期通信)  
+・ redisでセッション管理  
+・ 画像投稿機能  
+・ 画像プレビュー機能  
+・ ランキング機能  
+・ meta-tagsを用いてSEO対策・OGPの設定
 
 ### 使用した主なgem  
 
@@ -39,8 +45,10 @@ BMD(bootstrapマテリアルデザイン)4 + jquery
 ・ google-api-client  
 ・ slim-rails  
 ・ html2slim  
-・ pry-rails ・ pry-byebug  
-・ better_errors ・ binding_of_caller  
+・ pry-rails  
+・ pry-byebug  
+・ better_errors  
+・ binding_of_caller    
 ・ annotate  
 ・ font-awesome-sass  
 ・ kaminari  
@@ -51,11 +59,20 @@ BMD(bootstrapマテリアルデザイン)4 + jquery
 ・ enum_help  
 ・ rubocop  
 ・ rubocop-rails  
+・ carrierwave
+・ mini_magick
+・ redis-rails  
+・ meta-tags
 
 [テーブル設計図](https://drive.google.com/file/d/11ey6EfBfC_RPcF8sAm72-AlZz2jJMVQh/view?usp=sharing)
 
 ### 苦労した所
 
 ・フォームオブジェクトを使用した検索機能
-・ YoutubeのAPIを使用して、動画のタイトルと本文を取ってくる
-・ Googleログイン
+・YoutubeのAPIを使用して、動画のタイトルと本文を取ってくる
+・Googleログインの本番環境用設定
+
+### 工夫した点
+
+・実際の運用のことを想定してOGP画像やmetaタグを設定した。
+・ブラウザからURLをコピペする人ばかりじゃないことを知り、サイト上で別タブでYoutubeを開けるようにしたりなど、UXを考えて制作した。

@@ -1,0 +1,10 @@
+meta: 
+  site: Youtubeストッカー
+  title: Youtubeストッカー ~お気に入り動画をシェアしよう~
+  description: みんなのお気に入りのYoutube動画をシェアするアプリ。オフラインで会うことも少なくなったこのご時世に、このアプリケーションにYoutube動画を追加していくことで、オンラインでも話すきっかを作ろう！。
+  keywords: 
+    - Youtube
+    - 動画シェア
+  og: 
+    type: website
+    image_path: opg.png

@@ -1,0 +1,15 @@
+.container.mt-4
+  .row
+    - @top_rank_posts.each_with_index do |post, i|
+      .col-md-4.col-12
+        .card.mb-4
+          .card-header
+            h5
+              | 第
+              = i + 1
+              | 位
+          .card-body.rank-post
+            iframe width="100%" src="https://www.youtube.com/embed/#{post.youtube_id}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"
+          .text-center
+            p.card-title
+              = link_to post.title, post_path(post) 

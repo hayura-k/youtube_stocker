@@ -11,7 +11,7 @@
     .col-xl-6.col-12.scroll
       = raw Rinku.auto_link(simple_format(@post.body))
 
-  h2 コメント一覧
+  h2 コメント
   = render 'comments/comments', comments: @comments
   - if logged_in?
     / デフォルトでremote: trueになっている
