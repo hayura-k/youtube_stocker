@@ -33,6 +33,7 @@ gem 'font-awesome-sass'
 gem 'redis-rails'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'meta-tags'
 gem 'fog'
 
 group :development, :test do
