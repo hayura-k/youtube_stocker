@@ -64,7 +64,7 @@ BMD(bootstrapマテリアルデザイン)4 + jquery
 ・ redis-rails  
 ・ meta-tags
 
-[テーブル設計図](https://drive.google.com/file/d/11ey6EfBfC_RPcF8sAm72-AlZz2jJMVQh/view?usp=sharing)
+[テーブル設計図](https://gyazo.com/87dbf4413b15a19d85f1884b0456de86)
 
 ### 苦労した所
 
